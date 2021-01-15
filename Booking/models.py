@@ -8,7 +8,7 @@ class Pizza(models.Model):
     proteins = models.DecimalField(max_digits=3, decimal_places=1, help_text='Amount of proteins in 100g of a product')
     fats = models.DecimalField(max_digits=3, decimal_places=1, help_text='Amount of fats in 100g of a product')
     carbohydrates = models.DecimalField(max_digits=3, decimal_places=1, help_text='Amount of carbohydrates in 100g of a product')
-    calories = models.DecimalField(max_digits=3, decimal_places=1, help_text='Amount of calories in 100g of a product')
+    calories = models.DecimalField(max_digits=3, decimal_places=0, help_text='Amount of calories in 100g of a product')
 
     composition = models.TextField(help_text='What this product contains')
     
