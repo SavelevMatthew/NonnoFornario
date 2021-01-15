@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Booking/styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Booking/styles/media.css' %}">
+    <link rel="stylesheet" href="{% static 'Booking/styles/glide.core.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Booking/styles/glide.theme.min.css' %}">
+    <script src="{% static 'Booking/scripts/glide.min.js' %}"></script>
+    <script src="{% static 'Booking/scripts/main.js' %}"></script>
+    <title>Nonno Fornario</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__wrapper content_wrap">
+            <input type="checkbox" name="menu-check" id="menu-check">
+            <label for="menu-check" class="header__label">
+                <img src="{% static 'Booking/images/header/menu.svg' %}"
+                     alt="menu icon" class="header__menu-icon">
+            </label>
+            <div class="header__title">
+                <img src="{% static 'Booking/images/header/logo.svg' %}"
+                     alt="Restaurant logo" class="header__logo">
+                <span class="header__name">Nonno Fornário</span>
+            </div>
+            <nav class="header__menu menu">
+                <span class="menu__item menu__item_active" id="home-section">home</span>
+                <span class="menu__item" id="about-section">about us</span>
+                <span class="menu__item" id="menu-section">menu</span>
+                <span class="menu__item" id="booking-section">booking</span>
+                <span class="menu__item" id="contacts-section">contacts</span>
+            </nav>
+        </div>
+    </header>
+    <section class="slide full-slide home-wrap" id="home">
+        <div class="home">
+            <div class="home__hover"></div>
+        </div>
+        <div class="filler"></div>
+        <div class="home__text">
+                <div class="home__text_main">
+                    Nonno Fornário
+                </div>
+                <div class="home__text_sub">
+                    Italian Pizza with Ural Character
+                </div>
+            </div>
+    </section>
+    <section class="slide full-slide about-us" id="about">
+        <div class="about__description cell">
+            <div class="cell__caption">about us</div>
+            <div class="cell__text">
+                since <b class="bold">1920</b> we have been cooking the best pizza in the urals.
+            </div>
+            <div class="cell__text">
+                we served visitors from <span class="red"><b class="bold">76</b></span> countries,
+                <span class="yellow"><b class="bold">315</b></span> cities and
+                <span class="green"><b class="bold">4</b></span> continents.
+            </div>
+            <div class="cell__text">
+                here the Italian nature and the Ural character are ideally combined ...  so,
+            </div>
+            <div class="cell__text">
+                how about some pizza? <b class="bold">:-)</b>
+            </div>
+        </div>
+        <div class="cell about__image">
+            <img src="{% static 'Booking/images/about/cooker.png' %}" alt="Nonno art">
+        </div>
+        <div class="about__map cell">
+            <div class="map-container" id="map-box">
+
+            </div>
+        </div>
+    </section>
+    <section class="slide full-slide pizza-menu" id="menu">
+        <div class="images glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% block menu-cards %}
+                    {% endblock %}
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">L</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">R</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
