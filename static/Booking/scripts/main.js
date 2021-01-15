@@ -77,9 +77,21 @@ function pageLoaded() {
     // Adding glider
     const glider = new Glide('.images', {
         type: 'carousel',
-        perView: 2,
+        perView: 4,
         focusAt: 'center',
-        gap: 40
+        gap: 40,
+        breakpoints: {
+            1399: {
+                perView: 3
+            },
+            1100: {
+                perView: 2
+            },
+            720: {
+                perView: 1
+            }
+
+        }
     })
     glider.mount()
     attachMenuComponents()
@@ -102,6 +114,9 @@ function processMenuClick(e) {
     }
     else if (id === 'about-section') {
         scrollTo(document.documentElement, document.getElementById('about').offsetTop - 90, 800)
+    }
+    else if (id === 'menu-section') {
+        scrollTo(document.documentElement, document.getElementById('menu').offsetTop - 90, 800)
     }
 }
 function scrollTo(element, to, duration) {
@@ -132,14 +147,18 @@ Math.easeInOutQuad = function (t, b, c, d) {
 function processScroll() {
     let home = document.getElementById('home')
     let about = document.getElementById('about')
+    let menu = document.getElementById('menu')
     if (pageYOffset + 90 < home.offsetHeight) {
         setActive(document.getElementById('home-section'))
     }
     else if (pageYOffset + 90 < about.offsetHeight + about.offsetTop) {
         setActive(document.getElementById('about-section'))
     }
-    else {
+    else if (pageYOffset + 90 < menu.offsetHeight + menu.offsetTop){
         setActive(document.getElementById('menu-section'))
+    }
+    else {
+        setActive(document.getElementById('booking-section'))
     }
 }
 function setActive(e) {

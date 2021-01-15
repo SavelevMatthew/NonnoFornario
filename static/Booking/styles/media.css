@@ -113,10 +113,9 @@
         padding-bottom: 30px;
     }
     .about__map {
+        width: 100%;
         height: calc(100vh - 90px);
     }
-}
-@media screen and (max-width: 750px) {
     .home__text_main {
         font-size: 80px;
     }
@@ -134,6 +133,12 @@
         text-shadow: var(--ita-shad-small);
     }
 }
+@media screen and (max-width: 720px) {
+    .pizza-card {
+        max-width: 75vw;
+        margin: auto;
+    }
+}
 
 @media screen and (max-width: 477px) {
     .home__text_main {
@@ -142,6 +147,18 @@
     .home__text_sub {
         font-size: 20px;
         margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .call__icon {
+        width: 1.5rem;
+    }
+    .call__block {
+        font-size: 1rem;
+    }
+    .pizza-card__title {
+        font-size: 1.3rem;
     }
 }
 /*MIN-MEDIA*/

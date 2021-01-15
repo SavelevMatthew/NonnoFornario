@@ -18,6 +18,7 @@ body {
     box-sizing: border-box;
     height: 500vh;
     color: var(--text);
+    font-family: 'Montserrat', sans-serif;
 }
 a {
     color: inherit;
@@ -293,6 +294,13 @@ a {
     width: calc(100% - 2 * (var(--map-bor) + var(--map-pad)));
     height: calc(100% - 2 * (var(--map-bor) + var(--map-pad)));
 }
+.glide__arrow {
+    background-color: var(--green) !important;
+}
+.inline-icon {
+    font-size: 1em;
+    height: 2em;
+}
 /*#endregion*/
 /*#region Slide-menu*/
 .pizza-menu {
@@ -307,7 +315,7 @@ a {
     justify-content: center;
 }
 .pizza-card {
-    width: 45vh;
+    width: 100%;
     height: 60vh;
     background: var(--light);
     border-radius: 45px 45px 45px 45px;
@@ -315,7 +323,7 @@ a {
     grid-template-columns: 100%;
     grid-template-rows: 60fr 15fr 10fr 15fr;
     overflow: hidden;
-
+    font-family: 'Montserrat', sans-serif;
 }
 .pizza-card__photo-box {
     width: 100%;
@@ -328,9 +336,6 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-.pizza-card {
-    font-family: 'Montserrat', sans-serif;
 }
 .pizza-card__title-box {
     width: 100%;
@@ -418,5 +423,21 @@ a {
 }
 .pizza-card__description_moved {
     transform: translateY(-100%);
+}
+.images {
+    margin: 150px 0;
+}
+.images::before {
+    content: 'menu';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    font-size: 5rem;
+    color: var(--light);
+    line-height: 1.2;
+    transform: translateX(-50%);
+    border-bottom: 4px solid var(--light);
+    margin-bottom: 20px;
+    opacity: 0.7;
 }
 /*#endregion*/
