@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # USER APPS
     'Booking',
+    'Booking.booking_functions',
     # Cleaning files UP
     'django_cleanup',
+    # Phone Processors
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
+
+TIME_INPUT_FORMATS = ('%H:%M',)
