@@ -1,9 +1,12 @@
 :root {
     --green: #4F642C;
     --red: #CD4F39;
+    --d-red: hsl(9, 59%, 45%);
+    --vd-red: hsl(9, 59%, 40%);
     --brown: #675D51;
     --l-brown: #CCB38B;
     --light: #FDF6E6;
+    --half-light: rgba(253, 246, 230, 0.6);
     --grey: #DEDCD7;
     --text: #1f1f1f;
     --yellow: #de9c2f;
@@ -354,6 +357,7 @@ a {
     white-space: nowrap;
     text-overflow: ellipsis;
     text-transform: uppercase;
+    text-align: center;
 }
 .pizza-card__info-box {
     display: grid;
@@ -444,5 +448,234 @@ a {
 /*#region Booking*/
 .booking-page {
     background-color: var(--l-brown);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.section__title_big {
+    font-size: 5rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    margin-top: 50px;
+}
+.section__title_light {
+    color: var(--light);
+    border-bottom: 4px solid var(--light);
+}
+.booking-form {
+    width: calc(100% - 50px);
+    max-width: 500px;
+    min-height: 50px;
+}
+.booking-form * {
+    box-sizing: border-box;
+}
+.field {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    font-size: 1.7rem;
+}
+.field__input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    color: var(--brown);
+    border: none;
+    outline: none;
+    background-color: var(--half-light);
+    font-size: 1.5rem;
+}
+.field__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 2px solid var(--brown);
+}
+.field__label::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid var(--red);
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+.field__holder {
+    position: absolute;
+    bottom: 25%;
+    transform: translateY(50%);
+    transition: all 0.3s ease;
+    left: 0;
+    opacity: 0.6;
+}
+.field__input:focus + .field__label .field__holder,
+.field__input:valid + .field__label .field__holder {
+    transform: translateY(-110%);
+    opacity: 1;
+    color: var(--green);
+}
+.field__input:focus + .field__label::after,
+.field__input:valid + .field__label::after {
+    transform: translateX(0%);
+}
+.field__input_webkit::-webkit-datetime-edit-text,
+.field__input_webkit::-webkit-datetime-edit-month-field,
+.field__input_webkit::-webkit-datetime-edit-day-field,
+.field__input_webkit::-webkit-datetime-edit-year-field,
+.field__input_webkit::-webkit-datetime-edit {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.field__input_webkit:focus::-webkit-datetime-edit-text,
+.field__input_webkit:focus::-webkit-datetime-edit-month-field,
+.field__input_webkit:focus::-webkit-datetime-edit-day-field,
+.field__input_webkit:focus::-webkit-datetime-edit-year-field,
+.field__input_webkit:focus::-webkit-datetime-edit,
+.field__input_webkit:valid::-webkit-datetime-edit-text,
+.field__input_webkit:valid::-webkit-datetime-edit-month-field,
+.field__input_webkit:valid::-webkit-datetime-edit-day-field,
+.field__input_webkit:valid::-webkit-datetime-edit-year-field,
+.field__input_webkit:valid::-webkit-datetime-edit {
+    opacity: 1;
+}
+.field__input_webkit::-webkit-calendar-picker-indicator {
+    margin-right: 10px;
+    color: var(--brown);
+}
+.field__input_date + .field__label .field__holder::after {
+    content: ' (dd.mm.yyyy)';
+    font-size: 1.4rem;
+}
+.field__input_time + .field__label .field__holder::after {
+    content: ' (HH:MM)';
+    font-size: 1.4rem;
+}
+.booking-form__time-wrap {
+    width: 100%;
+    height: 170px;
+    display: grid;
+    grid-template-rows: 120px 50px;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
+}
+.field__info,
+.field__check-close-wrap {
+    grid-column: span 2;
+}
+.field__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--brown);
+    text-decoration: underline;
+    text-align: center;
+}
+.booking-form__persons-wrap {
+    width: 100%;
+    height: 60px;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 50px;
+}
+.selector {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.field__select {
+    background-color: var(--half-light);
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    color: var(--brown);
+    outline: none;
+    border-bottom: 3px solid var(--red);
+}
+.field__select-label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 100%;
+    left: 0;
+    font-size: 1.7rem;
+    color: var(--green);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.check_menu {
+    width: 100%;
+    height: 60px;
+    margin-top: 60px;
+    background: var(--half-light);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.booking-form__checkbox {
+    display: none;
+}
+.field__smoking-label {
+    width: 33.33%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: var(--brown);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+#sm-yes:checked ~ #sm-yes-label,
+#sm-no:checked ~ #sm-no-label,
+#sm-any:checked ~ #sm-any-label {
+    color: var(--light);
+}
+#bg-roller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.33%;
+    height: 100%;
+    background: var(--red);
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+}
+#sm-yes:checked ~ #bg-roller {
+    transform: translateX(200%);
+}
+#sm-no:checked ~ #bg-roller {
+    transform: translateX(100%);
+}
+.booking-form__submit {
+    width: 100%;
+    height: 60px;
+    margin-top: 60px;
+    margin-bottom: 120px;
+    font-size: 2rem;
+    background-color: var(--red);
+    border: none;
+    outline: none;
+    color: var(--light);
+}
+.booking-form__submit:active {
+    background-color: var(--d-red);
 }
 /*#endregion*/

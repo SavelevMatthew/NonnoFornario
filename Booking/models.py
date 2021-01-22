@@ -8,7 +8,7 @@ smoking_choice = (
 )
 location_choice = (
     ('WND', 'Near to window'),
-    ('CEN', 'In center of restaurant'),
+    ('CEN', 'In the center of restaurant'),
     ('COR', 'Corner of restaurant')
 )
 status_choice = (

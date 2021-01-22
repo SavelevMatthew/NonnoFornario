@@ -43,3 +43,81 @@
         </li>
     {% endfor %}
 {% endblock %}
+
+{% block book-form %}
+    <form action="{% url 'home' %}" method="POST" class="booking-form">
+        <div class="booking-form__field field">
+            <input type="text" required name="name" class="field__input" id="name">
+            <label for="name" class="field__label">
+                <span class="field__holder">name</span>
+            </label>
+        </div>
+        <div class="booking-form__field field">
+            <input type="tel" required name="phone" class="field__input" id="phone">
+            <label for="phone" class="field__label">
+                <span class="field__holder">phone</span>
+            </label>
+        </div>
+        <div class="booking-form__field field">
+            <input type="date" required name="date"
+                   class="field__input field__input_webkit field__input_date" id="date" min="{{ now_date }}">
+            <label for="date" class="field__label">
+                <span class="field__holder">date</span>
+            </label>
+        </div>
+        <div class="booking-form__time-wrap">
+            <div class="booking-form__field field">
+                <input type="time" required name="time_from" class="field__input field__input_webkit field__input_time" id="time_from" min="18:00">
+                <label for="time_from" class="field__label">
+                    <span class="field__holder field__holder_time">from</span>
+                </label>
+            </div>
+            <div class="booking-form__field field">
+                <input type="time" required name="time_to" class="field__input field__input_webkit field__input_time" id="time_to" min="18:00">
+                <label for="time_to" class="field__label">
+                    <span class="field__holder field__holder_time">to</span>
+                </label>
+            </div>
+            <span class="field__info">
+                We work from 18:00 to 23:59, every day!
+            </span>
+        </div>
+        <div class="booking-form__persons-wrap">
+            <div class="selector">
+                <select name="capacity" id="capacity" class="field__select" required>
+                    {% for i in cap_range %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <label for="capacity" class="field__select-label">
+                    <span class="field__select-holder">capacity</span>
+                </label>
+            </div>
+            <div class="selector">
+                <select name="location" id="location" class="field__select" required>
+                    <option value="ANY">Any</option>
+                    <option value="WND">Near to window</option>
+                    <option value="CEN">In the center of restaurant</option>
+                    <option value="COR">Corner of restaurant</option>
+                </select>
+                <label for="location" class="field__select-label">
+                    <span class="field__select-holder">table location</span>
+                </label>
+            </div>
+        </div>
+        <div class="check_menu">
+            <input type="radio" name="smoking" value="ANY" class="booking-form__checkbox" id="sm-any">
+            <input type="radio" name="smoking" value="NO" class="booking-form__checkbox" id="sm-no" checked>
+            <input type="radio" name="smoking" value="YES" class="booking-form__checkbox" id="sm-yes">
+            <label for="sm-any" class="field__smoking-label" id="sm-any-label">Any</label>
+            <label for="sm-no" class="field__smoking-label" id="sm-no-label">No</label>
+            <label for="sm-yes" class="field__smoking-label" id="sm-yes-label">Yes</label>
+            <div class="bg-roller" id="bg-roller"></div>
+            <div class="field__select-label">
+                <span class="field__select-holder">will you smoke?</span>
+            </div>
+        </div>
+        <input type="submit" name="submit" value="book!" class="booking-form__submit">
+        {% csrf_token %}
+    </form>
+{% endblock %}

@@ -139,7 +139,18 @@
         margin: auto;
     }
 }
-
+@media screen and (max-width: 549px) {
+    .booking-form__time-wrap {
+        grid-template-columns: 1fr;
+        grid-template-rows: 120px 120px 70px;
+        height: 310px;
+        grid-column-gap: 0;
+    }
+    .field__info {
+        grid-column: 1;
+        grid-row: 3;
+    }
+}
 @media screen and (max-width: 477px) {
     .home__text_main {
         font-size: 55px;
@@ -147,6 +158,13 @@
     .home__text_sub {
         font-size: 20px;
         margin-top: 25px;
+    }
+    .booking-form__persons-wrap {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 60px;
+        grid-column-gap: 0;
+        grid-row-gap: 60px;
+        height: 180px;
     }
 }
 
