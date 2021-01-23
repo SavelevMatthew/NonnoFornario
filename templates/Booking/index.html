@@ -23,11 +23,13 @@
                 <img src="{% static 'Booking/images/header/menu.svg' %}"
                      alt="menu icon" class="header__menu-icon">
             </label>
-            <div class="header__title">
+            <a href="{% url 'home' %}">
+                <div class="header__title">
                 <img src="{% static 'Booking/images/header/logo.svg' %}"
                      alt="Restaurant logo" class="header__logo">
                 <span class="header__name">Nonno Fornário</span>
             </div>
+            </a>
             <nav class="header__menu menu">
                 <span class="menu__item menu__item_active" id="home-section">home</span>
                 <span class="menu__item" id="about-section">about us</span>
