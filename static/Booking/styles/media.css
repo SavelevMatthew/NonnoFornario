@@ -142,13 +142,14 @@
 @media screen and (max-width: 549px) {
     .booking-form__time-wrap {
         grid-template-columns: 1fr;
-        grid-template-rows: 120px 120px 70px;
+        grid-template-rows: 70px 120px 120px;
         height: 310px;
         grid-column-gap: 0;
+        margin-bottom: 20px;
     }
     .field__info {
         grid-column: 1;
-        grid-row: 3;
+        grid-row: 1;
     }
 }
 @media screen and (max-width: 477px) {

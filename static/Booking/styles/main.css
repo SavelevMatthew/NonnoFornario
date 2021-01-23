@@ -475,7 +475,7 @@ a {
     position: relative;
     width: 100%;
     height: 120px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     font-size: 1.7rem;
 }
 .field__input {
@@ -503,10 +503,10 @@ a {
     position: absolute;
     bottom: -2px;
     left: 0;
-    width: 100%;
+    width: 0;
     height: 100%;
     border-bottom: 3px solid var(--red);
-    transform: translateX(-100%);
+    /*transform: translateX(-100%);*/
     transition: all 0.3s ease;
 }
 .field__holder {
@@ -525,7 +525,8 @@ a {
 }
 .field__input:focus + .field__label::after,
 .field__input:valid + .field__label::after {
-    transform: translateX(0%);
+    /*transform: translateX(0%);*/
+    width: 100%;
 }
 .field__input_webkit::-webkit-datetime-edit-text,
 .field__input_webkit::-webkit-datetime-edit-month-field,
@@ -563,9 +564,9 @@ a {
 }
 .booking-form__time-wrap {
     width: 100%;
-    height: 170px;
+    height: 190px;
     display: grid;
-    grid-template-rows: 120px 50px;
+    grid-template-rows: 50px 1fr;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 50px;
 }
@@ -582,11 +583,12 @@ a {
     color: var(--brown);
     text-decoration: underline;
     text-align: center;
+    transform: translateY(20px);
 }
 .booking-form__persons-wrap {
     width: 100%;
     height: 60px;
-    margin-top: 60px;
+    margin-top: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -621,7 +623,7 @@ a {
 .check_menu {
     width: 100%;
     height: 60px;
-    margin-top: 60px;
+    margin-top: 80px;
     background: var(--half-light);
     position: relative;
     display: flex;
@@ -677,5 +679,24 @@ a {
 }
 .booking-form__submit:active {
     background-color: var(--d-red);
+}
+.booking-form__field:not(:last-child) {
+    margin-bottom: 20px;
+}
+.field__error-box {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.field__error {
+    z-index: 5;
+    color: var(--red);
+    font-size: 1rem;
+    margin-top: 3px;
 }
 /*#endregion*/
