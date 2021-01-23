@@ -1,0 +1,42 @@
+{% load static %}
+{% for pizza in pizzas %}
+    <li class="glide__slide">
+        <div class="pizza-card">
+            <div class="pizza-card__photo-box">
+                <img src="{{ pizza.image.url }}" alt="Pizza {{ pizza.name }}" class="pizza-card__photo">
+                <div class="pizza-card__btn-holder">
+                    <span class="pizza-card__btn">Components</span>
+                </div>
+                <div class="pizza-card__description pizza-card__description_moved">
+                    {{ pizza.composition }}
+                </div>
+            </div>
+            <div class="pizza-card__title-box">
+                <div class="pizza-card__title">
+                    {{ pizza.name }}
+                </div>
+            </div>
+            <div class="pizza-card__info-box call">
+                <div class="call__block call__block_red">
+                    <img src="{% static 'Booking/images/menu/proteins.svg' %}" alt="Proteins" class="call__icon">
+                    {{ pizza.proteins }}
+                </div>
+                <div class="call__block call__block_yellow">
+                    <img src="{% static 'Booking/images/menu/fats.svg' %}" alt="Fats" class="call__icon">
+                    {{ pizza.fats }}
+                </div>
+                <div class="call__block call__block_green">
+                    <img src="{% static 'Booking/images/menu/carbohydrates.png' %}" alt="carbohydrates" class="call__icon">
+                    {{ pizza.carbohydrates }}
+                </div>
+                <div class="call__block call__block_brown">
+                    <img src="{% static 'Booking/images/menu/kcal.svg' %}" alt="Calories" class="call__icon">
+                    {{ pizza.calories }}
+                </div>
+            </div>
+            <div class="pizza-card__price-box">
+               <span class="pizza-card__price">Price: ${{ pizza.price }}</span>
+            </div>
+        </div>
+    </li>
+{% endfor %}
