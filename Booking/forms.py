@@ -9,7 +9,7 @@ import datetime
 class BookingForm(forms.Form):
     name = forms.CharField(max_length=32)
     phone = PhoneNumberField()
-    date = forms.DateField(input_formats=['%d.%m.%Y'])
+    date = forms.DateField(input_formats=['%d.%m.%Y', '%Y-%m-%d'])
 
     time_from = forms.TimeField()
     time_to = forms.TimeField()
@@ -27,7 +27,7 @@ class BookingForm(forms.Form):
         self.fields['capacity'].choices = choices.get_proper_table_choices()
 
     def clean_date(self):
-        data = self.cleaned_data['date']
+        data = self.cleaned_data.get('date')
         if data < datetime.date.today():
             raise forms.ValidationError(
                 _('Date should be today or later'),
@@ -36,7 +36,7 @@ class BookingForm(forms.Form):
         return data
 
     def clean_time_from(self):
-        t = self.cleaned_data['time_from']
+        t = self.cleaned_data.get('time_from')
         if t < datetime.datetime.strptime('18:00', '%H:%M').time():
             raise forms.ValidationError(
                 _('You can book only from 18:00'),
@@ -45,13 +45,13 @@ class BookingForm(forms.Form):
         return t
 
     def clean_time_to(self):
-        t_t = self.cleaned_data['time_to']
+        t_t = self.cleaned_data.get('time_to')
         if t_t < datetime.datetime.strptime('18:00', '%H:%M').time():
             raise forms.ValidationError(
                 _('End of booking cannot be less than 18:00'),
                 code='invalid'
             )
-        t_f = self.cleaned_data['time_from']
+        t_f = self.cleaned_data.get('time_from')
         if t_f >= t_t:
             raise forms.ValidationError(
                 _('Start time of booking should be less than end time'),
@@ -59,7 +59,6 @@ class BookingForm(forms.Form):
             )
         return t_t
 
-    # TODO: make AJAX
     # TODO: make add to base
     # TODO: make preloader
     # TODO: make readme

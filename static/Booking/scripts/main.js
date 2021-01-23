@@ -212,3 +212,8 @@ function attachMenuComponents() {
         }
     }
 }
+
+function hideMessages() {
+    $('#message-box').css('display', 'none')
+    console.log('asdasd')
+}

@@ -1,4 +1,5 @@
-<form action="{% url 'home' %}" method="POST" class="booking-form">
+{% load static %}
+<form action="{% url 'home' %}" method="POST" class="booking-form" id="booking-form">
     <div class="booking-form__field field">
         <input type="text" required name="name" class="field__input" id="name" maxlength="32" {% if form.is_bound %}value="{{ form.name.value }}"{% endif %}>
         <label for="name" class="field__label">
@@ -110,6 +111,9 @@
             {% endfor %}
         </div>
     </div>
-    <input type="submit" name="submit" value="book!" class="booking-form__submit">
+    <input type="submit" name="submit" value="book!" class="booking-form__submit" id="submit">
     {% csrf_token %}
+    {% if status %}
+        {% include 'Booking/message.html' %}
+    {% endif %}
 </form>

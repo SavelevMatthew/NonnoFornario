@@ -1,0 +1,10 @@
+<div class="booking-form__message-box" id="message-box">
+    <div id="message-box__bg" onClick="hideMessages()"></div>
+    <div class="message">
+        <div class="message__icon-wrap {% if status == 'success' %}message__icon-wrap_success{% else %}message__icon-wrap_fail{% endif %}"></div>
+        <div class="message__text">
+            {{ message }}
+        </div>
+        <div class="message__ok" onclick="hideMessages()">OK</div>
+    </div>
+</div>
