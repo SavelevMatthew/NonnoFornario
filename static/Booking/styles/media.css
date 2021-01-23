@@ -167,6 +167,9 @@
         grid-row-gap: 60px;
         height: 180px;
     }
+    .socials__box {
+        margin: 10px;
+    }
 }
 
 @media screen and (max-width: 420px) {

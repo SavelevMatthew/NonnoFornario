@@ -121,6 +121,9 @@ function processMenuClick(e) {
     else if (id === 'booking-section') {
         scrollTo(document.documentElement, document.getElementById('booking').offsetTop - 90, 800)
     }
+    else {
+        scrollTo(document.documentElement, document.getElementById('contacts').offsetTop, 800)
+    }
 }
 function scrollTo(element, to, duration) {
     let start = element.scrollTop,
@@ -151,6 +154,8 @@ function processScroll() {
     let home = document.getElementById('home')
     let about = document.getElementById('about')
     let menu = document.getElementById('menu')
+    let booking = document.getElementById('booking')
+    let contacts = document.getElementById('contacts')
     if (pageYOffset + 90 < home.offsetHeight) {
         setActive(document.getElementById('home-section'))
     }
@@ -160,8 +165,11 @@ function processScroll() {
     else if (pageYOffset + 90 < menu.offsetHeight + menu.offsetTop){
         setActive(document.getElementById('menu-section'))
     }
-    else {
+    else if (pageYOffset + 150 < contacts.offsetTop + contacts.offsetHeight - window.innerHeight){
         setActive(document.getElementById('booking-section'))
+    }
+    else {
+        setActive(document.getElementById('contacts-section'))
     }
 }
 function setActive(e) {
