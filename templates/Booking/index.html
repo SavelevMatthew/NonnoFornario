@@ -47,7 +47,7 @@
 {% block book-form %}
     <form action="{% url 'home' %}" method="POST" class="booking-form">
         <div class="booking-form__field field">
-            <input type="text" required name="name" class="field__input" id="name" maxlength="32">
+            <input type="text" required name="name" class="field__input" id="name" maxlength="32" {% if form.is_bound %}value="{{ form.name.value }}"{% endif %}>
             <label for="name" class="field__label">
                 <span class="field__holder">name</span>
             </label>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="booking-form__field field">
-            <input type="tel" required name="phone" class="field__input" id="phone">
+            <input type="tel" required name="phone" class="field__input" id="phone" {% if form.is_bound %}value="{{ form.phone.value }}"{% endif %}>
             <label for="phone" class="field__label">
                 <span class="field__holder">phone</span>
             </label>
@@ -70,7 +70,7 @@
         </div>
         <div class="booking-form__field field">
             <input type="date" required name="date"
-                   class="field__input field__input_webkit field__input_date" id="date" min="{{ now_date }}">
+                   class="field__input field__input_webkit field__input_date" id="date" min="{{ now_date }}" {% if form.is_bound %}value="{{ form.date.value }}"{% endif %}>
             <label for="date" class="field__label">
                 <span class="field__holder">date</span>
             </label>
@@ -85,7 +85,7 @@
                 We work from 18:00 to 23:59, every day!
             </span>
             <div class="booking-form__field field">
-                <input type="time" required name="time_from" class="field__input field__input_webkit field__input_time" id="time_from">
+                <input type="time" required name="time_from" class="field__input field__input_webkit field__input_time" id="time_from" {% if form.is_bound %}value="{{ form.time_from.value }}"{% endif %}>
                 <label for="time_from" class="field__label">
                     <span class="field__holder field__holder_time">from</span>
                 </label>
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="booking-form__field field">
-                <input type="time" required name="time_to" class="field__input field__input_webkit field__input_time" id="time_to">
+                <input type="time" required name="time_to" class="field__input field__input_webkit field__input_time" id="time_to" {% if form.is_bound %}value="{{ form.time_to.value }}"{% endif %}>
                 <label for="time_to" class="field__label">
                     <span class="field__holder field__holder_time">to</span>
                 </label>
@@ -149,7 +149,7 @@
             <label for="sm-yes" class="field__smoking-label" id="sm-yes-label">Yes</label>
             <div class="bg-roller" id="bg-roller"></div>
             <div class="field__select-label">
-                <span class="field__select-holder">will you smoke?</span>
+                <span class="field__select-holder">hall with ashtrays?</span>
             </div>
             <div class="field__error-box">
                 {% for err in form.smoking.errors %}
