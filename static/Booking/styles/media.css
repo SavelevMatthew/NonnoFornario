@@ -180,6 +180,11 @@
         font-size: 1.3rem;
     }
 }
+@media screen and (max-width: 388px) {
+    .section__title_big {
+        font-size: 4rem;
+    }
+}
 /*MIN-MEDIA*/
 @media screen and (min-width: 871px) {
     .menu__item:first-child {

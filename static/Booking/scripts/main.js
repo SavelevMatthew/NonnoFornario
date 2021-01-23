@@ -118,6 +118,9 @@ function processMenuClick(e) {
     else if (id === 'menu-section') {
         scrollTo(document.documentElement, document.getElementById('menu').offsetTop - 90, 800)
     }
+    else if (id === 'booking-section') {
+        scrollTo(document.documentElement, document.getElementById('booking').offsetTop - 90, 800)
+    }
 }
 function scrollTo(element, to, duration) {
     let start = element.scrollTop,
@@ -215,5 +218,4 @@ function attachMenuComponents() {
 
 function hideMessages() {
     $('#message-box').css('display', 'none')
-    console.log('asdasd')
 }
