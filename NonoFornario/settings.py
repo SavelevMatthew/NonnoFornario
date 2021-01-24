@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,9 @@ SECRET_KEY = '77qvj#s8i#%h@dlfxs*9ea8%u_y#w7=k14)b6&@pifl9fndf4l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Application definition
@@ -143,11 +146,6 @@ DATE_INPUT_FORMATS = [
     '%d.%m.%Y'
 ]
 
-os.environ['AWS_ACCESS_KEY_ID'] = 'AKIAX5PFUK4UHW3NJSUT'
-os.environ['AWS_SECRET_ACCESS_KEY'] = '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'
-os.environ['AWS_STORAGE_BUCKET_NAME'] = 'nonno-fornario'
-os.environ['AWS_URL'] = f'https://nonno-fornario.s3.amazonaws.com/'
-
 # AWS S3 SETTINGS
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -161,3 +159,6 @@ STATIC_URL = AWS_URL + '/static/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = AWS_URL + '/media/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+import django_on_heroku
+django_on_heroku.settings(locals(), staticfiles=False)
